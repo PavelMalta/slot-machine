@@ -16,4 +16,19 @@
 .monitorSetting {
     border: 1px solid black;
     height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.creditContainer {
+    border: 1px solid black;
+    display: flex;
+    margin-left: 30px;
+}
+
+.betContainer {
+    border: 1px solid black;
+    display: flex;
+    margin-right: 30px;
 }

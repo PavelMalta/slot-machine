@@ -12,7 +12,14 @@ export const Monitor = () => {
                 <Drum value={1}/>
             </div>
             <div className={s.monitorSetting}>
-
+                <div className={s.creditContainer}>
+                    <div>CREDIT:</div>
+                    <div>1000</div>
+                </div>
+                <div className={s.betContainer}>
+                    <div>BET</div>
+                    <div>5</div>
+                </div>
             </div>
         </div>
     )
