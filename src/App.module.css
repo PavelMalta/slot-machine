@@ -1,0 +1,12 @@
+.app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.slotMachine {
+    border: 1px solid black;
+    height: 85%;
+    width: 75%;
+}

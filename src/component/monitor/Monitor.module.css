@@ -1,0 +1,19 @@
+.container {
+    border: 1px solid black;
+    height: 70%;
+    margin: 30px;
+}
+
+
+.monitor {
+    border: 1px solid black;
+    height: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.monitorSetting {
+    border: 1px solid black;
+    height: 15%;
+}
