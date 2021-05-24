@@ -22,6 +22,8 @@ export const appReducer = (state: InitialStateType = initialState, action: Actio
             return {...state, drumSecond: action.value}
         case 'APP/SET-DRUM-THIRD-VALUE':
             return {...state, drumThird: action.value}
+        case "APP/SET-ACTUAL-CREDITS":
+            return {...state, credit: state.credit - state.bet}
         default:
             return state
     }
@@ -31,9 +33,13 @@ type ActionsType = ReturnType<typeof setBetAC>
     | ReturnType<typeof setDrumFirstValueAC>
     | ReturnType<typeof setDrumSecondValueAC>
     | ReturnType<typeof setDrumThirdValueAC>
+    | ReturnType<typeof setActualCreditsAC>
 
 export const setBetAC = (bet: BetType) => {
     return {type: 'APP/SET-BET', bet} as const
+}
+export const setActualCreditsAC = () => {
+    return {type: 'APP/SET-ACTUAL-CREDITS'} as const
 }
 
 export const setDrumFirstValueAC = (value: any) => {
@@ -48,10 +54,11 @@ export const setDrumThirdValueAC = (value: any) => {
 
 export const setDrumFirstValueTC = () => {
     return (dispatch: Dispatch<ActionsType>) => {
+        dispatch(setActualCreditsAC())
         let promise = new Promise(resolve => {
             setTimeout(() => {
                 resolve(Math.floor(Math.random() * 7) + 1)
-            }, 3000)
+            }, 1000)
         })
         promise.then(result => {
             dispatch(setDrumFirstValueAC(result))
@@ -63,7 +70,7 @@ export const setDrumSecondValueTC = () => {
         let promise = new Promise(resolve => {
             setTimeout(() => {
                 resolve(Math.floor(Math.random() * 7) + 1)
-            }, 5000)
+            }, 2000)
         })
         promise.then(result => {
             dispatch(setDrumSecondValueAC(result))
@@ -75,7 +82,7 @@ export const setDrumThirdValueTC = () => {
         let promise = new Promise(resolve => {
             setTimeout(() => {
                 resolve(Math.floor(Math.random() * 7) + 1)
-            }, 7000)
+            }, 3000)
         })
         promise.then(result => {
             dispatch(setDrumThirdValueAC(result))

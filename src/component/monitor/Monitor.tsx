@@ -10,6 +10,7 @@ export const Monitor = () => {
     const drumFirst = useSelector<AppRootStateType, number>(store => store.app.drumFirst)
     const drumSecond = useSelector<AppRootStateType, number>(store => store.app.drumSecond)
     const drumThird = useSelector<AppRootStateType, number>(store => store.app.drumThird)
+    const credit = useSelector<AppRootStateType, number>(store => store.app.credit)
     const bet = useSelector<AppRootStateType, BetType>(store => store.app.bet)
 
     return (
@@ -22,7 +23,7 @@ export const Monitor = () => {
             <div className={s.monitorSetting}>
                 <div className={s.creditContainer}>
                     <div>CREDIT</div>
-                    <div className={s.creditScore}>1000</div>
+                    <div className={s.creditScore}>{credit}</div>
                 </div>
                 <div className={s.betContainer}>
                     <div>BET</div>
