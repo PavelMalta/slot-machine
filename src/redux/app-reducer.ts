@@ -1,3 +1,5 @@
+import {Dispatch} from "redux";
+
 export type BetType = 1 | 2 | 3 | 4 | 5 | 10 | 50 | 100
 export type DrumType = 1 | 2 | 3 | 4 | 5 | 6 | 7
 
@@ -34,7 +36,7 @@ export const setBetAC = (bet: BetType) => {
     return {type: 'APP/SET-BET', bet} as const
 }
 
-export const setDrumFirstValueAC = (value: number) => {
+export const setDrumFirstValueAC = (value: any) => {
     return {type: 'APP/SET-DRUM-FIRST-VALUE', value} as const
 }
 export const setDrumSecondValueAC = (value: number) => {
@@ -42,4 +44,17 @@ export const setDrumSecondValueAC = (value: number) => {
 }
 export const setDrumThirdValueAC = (value: number) => {
     return {type: 'APP/SET-DRUM-THIRD-VALUE', value} as const
+}
+
+export const setDrumFirstValueTC = () => {
+    return (dispatch: Dispatch<ActionsType>) => {
+        let promise = new Promise(resolve => {
+            setTimeout(() => {
+                resolve(Math.floor(Math.random() * 7) + 1)
+            }, 4000)
+        })
+        promise.then(result => {
+            dispatch(setDrumFirstValueAC(result))
+        })
+    }
 }

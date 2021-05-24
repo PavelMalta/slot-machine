@@ -3,7 +3,7 @@ import s from "./Keyboard.module.css"
 import {
     BetType,
     setBetAC,
-    setDrumFirstValueAC,
+    setDrumFirstValueAC, setDrumFirstValueTC,
     setDrumSecondValueAC,
     setDrumThirdValueAC
 } from "../../redux/app-reducer";
@@ -40,7 +40,7 @@ export const Keyboard = () => {
     }
 
     const startSpin = () => {
-        dispatch(setDrumFirstValueAC(randomSpin()));
+        dispatch(setDrumFirstValueTC());
         dispatch(setDrumSecondValueAC(randomSpin()));
         dispatch(setDrumThirdValueAC(randomSpin()));
     }
