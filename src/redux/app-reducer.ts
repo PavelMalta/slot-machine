@@ -39,10 +39,10 @@ export const setBetAC = (bet: BetType) => {
 export const setDrumFirstValueAC = (value: any) => {
     return {type: 'APP/SET-DRUM-FIRST-VALUE', value} as const
 }
-export const setDrumSecondValueAC = (value: number) => {
+export const setDrumSecondValueAC = (value: any) => {
     return {type: 'APP/SET-DRUM-SECOND-VALUE', value} as const
 }
-export const setDrumThirdValueAC = (value: number) => {
+export const setDrumThirdValueAC = (value: any) => {
     return {type: 'APP/SET-DRUM-THIRD-VALUE', value} as const
 }
 
@@ -51,10 +51,34 @@ export const setDrumFirstValueTC = () => {
         let promise = new Promise(resolve => {
             setTimeout(() => {
                 resolve(Math.floor(Math.random() * 7) + 1)
-            }, 4000)
+            }, 3000)
         })
         promise.then(result => {
             dispatch(setDrumFirstValueAC(result))
+        })
+    }
+}
+export const setDrumSecondValueTC = () => {
+    return (dispatch: Dispatch<ActionsType>) => {
+        let promise = new Promise(resolve => {
+            setTimeout(() => {
+                resolve(Math.floor(Math.random() * 7) + 1)
+            }, 5000)
+        })
+        promise.then(result => {
+            dispatch(setDrumSecondValueAC(result))
+        })
+    }
+}
+export const setDrumThirdValueTC = () => {
+    return (dispatch: Dispatch<ActionsType>) => {
+        let promise = new Promise(resolve => {
+            setTimeout(() => {
+                resolve(Math.floor(Math.random() * 7) + 1)
+            }, 7000)
+        })
+        promise.then(result => {
+            dispatch(setDrumThirdValueAC(result))
         })
     }
 }

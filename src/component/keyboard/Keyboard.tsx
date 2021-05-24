@@ -4,8 +4,8 @@ import {
     BetType,
     setBetAC,
     setDrumFirstValueAC, setDrumFirstValueTC,
-    setDrumSecondValueAC,
-    setDrumThirdValueAC
+    setDrumSecondValueAC, setDrumSecondValueTC,
+    setDrumThirdValueAC, setDrumThirdValueTC
 } from "../../redux/app-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
@@ -35,14 +35,10 @@ export const Keyboard = () => {
         }
     }
 
-    let randomSpin = () => {
-        return Math.floor(Math.random() * 7) + 1
-    }
-
     const startSpin = () => {
         dispatch(setDrumFirstValueTC());
-        dispatch(setDrumSecondValueAC(randomSpin()));
-        dispatch(setDrumThirdValueAC(randomSpin()));
+        dispatch(setDrumSecondValueTC());
+        dispatch(setDrumThirdValueTC());
     }
 
     return (
