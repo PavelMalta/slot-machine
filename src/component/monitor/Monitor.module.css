@@ -6,7 +6,7 @@
 
 
 .monitor {
-    border: 1px solid black;
+    border-bottom: 1px solid black;
     height: 85%;
     display: flex;
     align-items: center;
@@ -14,7 +14,6 @@
 }
 
 .monitorSetting {
-    border: 1px solid black;
     height: 15%;
     display: flex;
     align-items: center;
@@ -22,13 +21,29 @@
 }
 
 .creditContainer {
-    border: 1px solid black;
     display: flex;
     margin-left: 30px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.creditScore {
+    border: 1px solid black;
+    margin-left: 20px;
+    width: 80px;
+    height: 30px;
 }
 
 .betContainer {
-    border: 1px solid black;
     display: flex;
     margin-right: 30px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.betScore {
+    border: 1px solid black;
+    margin-left: 20px;
+    width: 50px;
+    height: 30px;
 }
