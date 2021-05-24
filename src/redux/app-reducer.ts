@@ -4,9 +4,9 @@ export type DrumType = 1 | 2 | 3 | 4 | 5 | 6 | 7
 const initialState = {
     credit: 100,
     bet: 1 as BetType,
-    drumFirst: 1 as DrumType,
-    drumSecond: 2 as DrumType,
-    drumThird: 3 as DrumType,
+    drumFirst: 1 as number,
+    drumSecond: 2 as number,
+    drumThird: 3 as number,
 }
 type InitialStateType = typeof initialState
 
@@ -14,13 +14,32 @@ export const appReducer = (state: InitialStateType = initialState, action: Actio
     switch (action.type) {
         case 'APP/SET-BET':
             return {...state, bet: action.bet}
+        case 'APP/SET-DRUM-FIRST-VALUE':
+            return {...state, drumFirst: action.value}
+        case 'APP/SET-DRUM-SECOND-VALUE':
+            return {...state, drumSecond: action.value}
+        case 'APP/SET-DRUM-THIRD-VALUE':
+            return {...state, drumThird: action.value}
         default:
             return state
     }
 }
 
 type ActionsType = ReturnType<typeof setBetAC>
+    | ReturnType<typeof setDrumFirstValueAC>
+    | ReturnType<typeof setDrumSecondValueAC>
+    | ReturnType<typeof setDrumThirdValueAC>
 
 export const setBetAC = (bet: BetType) => {
     return {type: 'APP/SET-BET', bet} as const
+}
+
+export const setDrumFirstValueAC = (value: number) => {
+    return {type: 'APP/SET-DRUM-FIRST-VALUE', value} as const
+}
+export const setDrumSecondValueAC = (value: number) => {
+    return {type: 'APP/SET-DRUM-SECOND-VALUE', value} as const
+}
+export const setDrumThirdValueAC = (value: number) => {
+    return {type: 'APP/SET-DRUM-THIRD-VALUE', value} as const
 }

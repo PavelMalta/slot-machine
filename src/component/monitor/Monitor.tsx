@@ -3,13 +3,13 @@ import s from "./Monitor.module.css"
 import {Drum} from "./Drum";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
-import {BetType, DrumType} from "../../redux/app-reducer";
+import {BetType} from "../../redux/app-reducer";
 
 export const Monitor = () => {
 
-    const drumFirst = useSelector<AppRootStateType, DrumType>(store => store.app.drumFirst)
-    const drumSecond = useSelector<AppRootStateType, DrumType>(store => store.app.drumSecond)
-    const drumThird = useSelector<AppRootStateType, DrumType>(store => store.app.drumThird)
+    const drumFirst = useSelector<AppRootStateType, number>(store => store.app.drumFirst)
+    const drumSecond = useSelector<AppRootStateType, number>(store => store.app.drumSecond)
+    const drumThird = useSelector<AppRootStateType, number>(store => store.app.drumThird)
     const bet = useSelector<AppRootStateType, BetType>(store => store.app.bet)
 
     return (

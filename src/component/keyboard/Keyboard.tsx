@@ -1,6 +1,12 @@
 import React from "react";
 import s from "./Keyboard.module.css"
-import {BetType, setBetAC} from "../../redux/app-reducer";
+import {
+    BetType,
+    setBetAC,
+    setDrumFirstValueAC,
+    setDrumSecondValueAC,
+    setDrumThirdValueAC
+} from "../../redux/app-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
 
@@ -29,10 +35,20 @@ export const Keyboard = () => {
         }
     }
 
+    let randomSpin = () => {
+        return Math.floor(Math.random() * 7) + 1
+    }
+
+    const startSpin = () => {
+        dispatch(setDrumFirstValueAC(randomSpin()));
+        dispatch(setDrumSecondValueAC(randomSpin()));
+        dispatch(setDrumThirdValueAC(randomSpin()));
+    }
+
     return (
         <div className={s.container}>
             <button onClick={setBet}>BET</button>
-            <button className={s.start}>START</button>
+            <button className={s.start} onClick={startSpin}>START</button>
         </div>
     )
 
