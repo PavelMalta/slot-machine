@@ -3,9 +3,9 @@ import s from "./Keyboard.module.css"
 import {
     BetType,
     setBetAC,
-    setDrumFirstValueAC, setDrumFirstValueTC,
-    setDrumSecondValueAC, setDrumSecondValueTC,
-    setDrumThirdValueAC, setDrumThirdValueTC
+    setDrumFirstValueTC,
+    setDrumSecondValueTC,
+    setDrumThirdValueTC
 } from "../../redux/app-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
@@ -13,6 +13,7 @@ import {AppRootStateType} from "../../redux/store";
 export const Keyboard = () => {
 
     const bet = useSelector<AppRootStateType, BetType>(store => store.app.bet)
+    const disabledStartButton = useSelector<AppRootStateType, boolean>(store => store.app.disabledStartButton)
     const dispatch = useDispatch()
 
     const setBet = () => {
@@ -44,7 +45,7 @@ export const Keyboard = () => {
     return (
         <div className={s.container}>
             <button onClick={setBet}>BET</button>
-            <button className={s.start} onClick={startSpin}>START</button>
+            <button className={s.start} onClick={startSpin} disabled={disabledStartButton}>START</button>
         </div>
     )
 

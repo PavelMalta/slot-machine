@@ -6,9 +6,10 @@ export type DrumType = 1 | 2 | 3 | 4 | 5 | 6 | 7
 const initialState = {
     credit: 100,
     bet: 1 as BetType,
-    drumFirst: 1 as number,
-    drumSecond: 2 as number,
-    drumThird: 3 as number,
+    drumFirst: 1,
+    drumSecond: 2,
+    drumThird: 3,
+    disabledStartButton: false
 }
 type InitialStateType = typeof initialState
 
@@ -24,6 +25,9 @@ export const appReducer = (state: InitialStateType = initialState, action: Actio
             return {...state, drumThird: action.value}
         case "APP/SET-ACTUAL-CREDITS":
             return {...state, credit: state.credit - state.bet}
+        case "APP/SET-DISABLED-BUTTON":
+            debugger
+            return {...state, disabledStartButton: action.disabled}
         default:
             return state
     }
@@ -34,6 +38,7 @@ type ActionsType = ReturnType<typeof setBetAC>
     | ReturnType<typeof setDrumSecondValueAC>
     | ReturnType<typeof setDrumThirdValueAC>
     | ReturnType<typeof setActualCreditsAC>
+    | ReturnType<typeof setDisabledButtonAC>
 
 export const setBetAC = (bet: BetType) => {
     return {type: 'APP/SET-BET', bet} as const
@@ -52,8 +57,13 @@ export const setDrumThirdValueAC = (value: any) => {
     return {type: 'APP/SET-DRUM-THIRD-VALUE', value} as const
 }
 
+export const setDisabledButtonAC = (disabled: boolean) => {
+    return {type: 'APP/SET-DISABLED-BUTTON', disabled} as const
+}
+
 export const setDrumFirstValueTC = () => {
     return (dispatch: Dispatch<ActionsType>) => {
+        dispatch(setDisabledButtonAC(true))
         dispatch(setActualCreditsAC())
         let promise = new Promise(resolve => {
             setTimeout(() => {
@@ -86,6 +96,7 @@ export const setDrumThirdValueTC = () => {
         })
         promise.then(result => {
             dispatch(setDrumThirdValueAC(result))
+            dispatch(setDisabledButtonAC(false))
         })
     }
 }
